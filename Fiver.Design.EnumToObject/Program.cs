@@ -9,22 +9,29 @@ namespace Fiver.Design.EnumToObject
             // Using Enums
             //CalculateNationalInsurance_Enum(NationalInsuranceLetters.X); // works
             //CalculateNationalInsurance_Enum(NationalInsuranceLetters.A); // works
-            //CalculateNationalInsurance_Enum((NationalInsuranceLetters)20); // works! despite 20 not being a valid value
+            //CalculateNationalInsurance_Enum((NationalInsuranceLetters)20); // accepts input! 
 
             // Using Objects
-            //CalculateNationalInsurance_Object(NationalInsuranceLetter.X); // works
-            //var letter = new NationalInsuranceLetter(); // can't even create an invalid object, better design to avoid extra code and bugs
+            //var letter = new NationalInsuranceLetter(); // can't even create an invalid object
+            CalculateNationalInsurance_Object(NationalInsuranceLetter.X); // works
 
             Console.ReadLine();
         }
 
         static void CalculateNationalInsurance_Enum(NationalInsuranceLetters letter)
         {
-            // have to add error checks to ensure valid enum is being passed e.g.
-            //if (!Enum.IsDefined(typeof(NationalInsuranceLetters), letter))
-            //    throw new ArgumentException($"invalid letter being passed {letter}");
+            if (!Enum.IsDefined(typeof(NationalInsuranceLetters), letter))
+                throw new ArgumentException($"invalid letter being passed {letter}");
 
-            if (letter == NationalInsuranceLetters.C || letter == NationalInsuranceLetters.X) // poor encapsulation, code duplication
+            if (letter == NationalInsuranceLetters.C || letter == NationalInsuranceLetters.X) 
+                Console.WriteLine($"don't calculate national insurance for {letter}");
+            else
+                Console.WriteLine($"calculate national insurance for {letter}");
+        }
+
+        static void CalculateNationalInsurance_Lib(NationalInsuranceLetters letter)
+        {
+            if (NationalInsuranceService.IsExempt(letter)) 
                 Console.WriteLine($"don't calculate national insurance for {letter}");
             else
                 Console.WriteLine($"calculate national insurance for {letter}");
@@ -32,7 +39,7 @@ namespace Fiver.Design.EnumToObject
 
         static void CalculateNationalInsurance_Object(NationalInsuranceLetter letter)
         {
-            if (letter.IsExempt()) // good encapsulation, reuse
+            if (letter.IsExempt())
                 Console.WriteLine($"don't calculate national insurance for {letter}");
             else
                 Console.WriteLine($"calculate national insurance for {letter}");

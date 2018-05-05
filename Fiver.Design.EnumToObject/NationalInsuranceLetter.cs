@@ -4,7 +4,7 @@ namespace Fiver.Design.EnumToObject
 {
     // rules: https://www.gov.uk/national-insurance-rates-letters/category-letters
 
-    internal class NationalInsuranceLetter
+    public sealed class NationalInsuranceLetter
     {
         private readonly NationalInsuranceLetters letter;
 
@@ -13,14 +13,29 @@ namespace Fiver.Design.EnumToObject
             this.letter = letter;
         }
 
-        public static NationalInsuranceLetter A = new NationalInsuranceLetter(NationalInsuranceLetters.A);
-        public static NationalInsuranceLetter B = new NationalInsuranceLetter(NationalInsuranceLetters.B);
-        public static NationalInsuranceLetter C = new NationalInsuranceLetter(NationalInsuranceLetters.C);
-        public static NationalInsuranceLetter H = new NationalInsuranceLetter(NationalInsuranceLetters.H);
-        public static NationalInsuranceLetter J = new NationalInsuranceLetter(NationalInsuranceLetters.J);
-        public static NationalInsuranceLetter M = new NationalInsuranceLetter(NationalInsuranceLetters.M);
-        public static NationalInsuranceLetter X = new NationalInsuranceLetter(NationalInsuranceLetters.X);
-        public static NationalInsuranceLetter Z = new NationalInsuranceLetter(NationalInsuranceLetters.Z);
+        public static NationalInsuranceLetter A = 
+            new NationalInsuranceLetter(NationalInsuranceLetters.A);
+
+        public static NationalInsuranceLetter B = 
+            new NationalInsuranceLetter(NationalInsuranceLetters.B);
+
+        public static NationalInsuranceLetter C = 
+            new NationalInsuranceLetter(NationalInsuranceLetters.C);
+
+        public static NationalInsuranceLetter H = 
+            new NationalInsuranceLetter(NationalInsuranceLetters.H);
+
+        public static NationalInsuranceLetter J = 
+            new NationalInsuranceLetter(NationalInsuranceLetters.J);
+
+        public static NationalInsuranceLetter M = 
+            new NationalInsuranceLetter(NationalInsuranceLetters.M);
+
+        public static NationalInsuranceLetter X = 
+            new NationalInsuranceLetter(NationalInsuranceLetters.X);
+
+        public static NationalInsuranceLetter Z = 
+            new NationalInsuranceLetter(NationalInsuranceLetters.Z);
 
         public bool IsExempt() =>
             this.letter == NationalInsuranceLetters.C || this.letter == NationalInsuranceLetters.X;
