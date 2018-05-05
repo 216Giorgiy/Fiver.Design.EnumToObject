@@ -12,7 +12,7 @@ namespace Fiver.Design.EnumToObject
             //CalculateNationalInsurance_Enum((NationalInsuranceLetters)20); // accepts input! 
 
             // Using Objects
-            //var letter = new NationalInsuranceLetter(); // can't even create an invalid object
+            //var letter = new NationalInsuranceLetter(); // won't compile
             CalculateNationalInsurance_Object(NationalInsuranceLetter.X); // works
 
             Console.ReadLine();
